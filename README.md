@@ -1,3 +1,15 @@
+# ローカルでの起動方法
+```
+フレームワーク インスタンス起動
+mvn function:run -Drun.functionTarget=org.example.functions.HelloWorld
+```
+
+```
+curl localhost:8080
+Hello World!
+```
+
+
 # システム概要
 1. データ収集
 - YouTube API: 日々の急上昇動画ランキングを取得します。
