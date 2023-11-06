@@ -10,14 +10,10 @@ import com.google.cloud.functions.HttpRequest;
 import com.google.cloud.functions.HttpResponse;
 import org.yaml.snakeyaml.Yaml;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.GeneralSecurityException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Youtube implements HttpFunction {
   private static String API_KEY = "";
@@ -83,7 +79,7 @@ public class Youtube implements HttpFunction {
   }
 
   private VideoListResponse fetchVideosByCategory(int videoCategoryId) throws IOException {
-    YouTube.Videos.List videoRequest = youtube.videos().list("id,snippet,statistics");
+    YouTube.Videos.List videoRequest = youtube.videos().list(Collections.singletonList("id,snippet,statistics"));
     videoRequest.setChart("mostPopular");
     videoRequest.setMaxResults(10L);
     videoRequest.setRegionCode("JP");
